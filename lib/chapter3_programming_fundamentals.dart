@@ -7,7 +7,56 @@ void main() {
   operators();
   strings();
   controlStructures();
+  loops();
+
   
+}
+
+void loops() {
+
+  print('\n\nLoops');
+
+  int beersOnTheWall = 5;
+  print('\n\nBeers on the wall version 1, beerOnTheWall =  $beersOnTheWall');
+  while (beersOnTheWall > 0) {
+    print("\n$beersOnTheWall bottles of beers on the wall, $beersOnTheWall\nbottles of beer. Take one down, pass it around, ${beersOnTheWall -1}\nbottels of beer on the wall.");
+    beersOnTheWall--;
+  }
+
+  beersOnTheWall = 5;
+  print('\n\nBeers on the wall version 2, beerOnTheWall =  $beersOnTheWall');
+  do {
+    print("\n$beersOnTheWall bottles of beers on the wall, $beersOnTheWall\nbottles of beer. Take one down, pass it around, ${beersOnTheWall -1}\nbottels of beer on the wall.");
+    beersOnTheWall--;
+  } while (beersOnTheWall > 0);
+
+
+  print('\n\nFor Loop');
+  for (int bOnTheWall = 3; bOnTheWall > 0; bOnTheWall--) {
+    print("\n$bOnTheWall bottles of beers on the wall, $bOnTheWall\nbottles of beer. Take one down, pass it around, ${bOnTheWall -1}\nbottels of beer on the wall.");
+  }
+
+  int num = 5; // Number of iterations
+  int total =0;
+
+  print('\nCount to $num');
+  for (int i = 1; i <= num; i++) {
+    total += i;
+    print('Number $i');
+  }
+  print('Total = $total');
+
+
+  print('\n\nPoweTotal');
+  int outLoop = 4;
+  int inLoop = 4;
+  for(int x = 1; x <= outLoop; x++) {
+    int powerTotal = 1;
+    for(int y = 1; y <= 10; y++ ) {
+      powerTotal = powerTotal * x;
+      print('$x^$y is $powerTotal');
+    }
+  }
 }
 
 void controlStructures() {
@@ -43,7 +92,7 @@ void controlStructures() {
   }
 
   String favoriteAnimal = "dog";
-
+  print('Favorite Animal = $favoriteAnimal');
   switch (favoriteAnimal) {
     case "dog":
       print("Bark!");
@@ -58,7 +107,29 @@ void controlStructures() {
       print("Your animal is a new species to me!");
 
   }
+  int digit = 6;
+  print('\ndigit is : $digit');
 
+  switch (digit) {
+    case 0:
+      print("Zero");
+      break ;
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 9:
+      print("Odd");
+      break ;
+    case 2:
+    case 4:
+    case 6:
+    case 8:
+      print("Even");
+      break ;
+    default :
+      print("Not a Digit");
+  }
 
 
 }
