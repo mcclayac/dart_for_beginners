@@ -143,6 +143,39 @@ void repeat2(String word, [int repetitions = 4]) {
 }
 
 
+// Optional paramenters
+void repeat3(String word, {int repetitions = 4, String exclamation = ''}) {
+  if (repetitions != null ) {
+    for (int i = 0; i < repetitions; i++) {
+      print(word + exclamation);
+    }
+  }
+}
+
+/// First Class Citizens
+///
+void talkAbout(String toShout, shoutFunc) {
+  print(shoutFunc(toShout));
+}
+
+String exclame(String toExclaim) => toExclaim + "!";
+
+String manyTalk(String toMany) {
+  String allTogether = "";
+  int repetitions = 4;
+  for (int i = 0; i < repetitions; i++) {
+    allTogether += " " + toMany;
+  }  // end-for
+  return allTogether;
+}
+
+
+void firstClassCitizen() {
+
+  talkAbout("TicTac", exclame);
+  talkAbout("TocToc", manyTalk);
+  talkAbout("TikTik", manyTalk);
+}
 void main() {
 
   print('\n\nChapter 5 Functions');
@@ -154,6 +187,16 @@ void main() {
   print('\n\nRepititons');
   repeat('Tony', 3);
   repeat2('Maxine');
-  
+
+  repeat3('Kristin');
+  repeat3('Alexis', repetitions: 2);
+  repeat3('Moses', repetitions : 4, exclamation : '!');
+  repeat3('Angelo', repetitions: 2, exclamation: " ,");
+
+  // repeat("Dog", "!");  // ILLEGAL
+  // repeat("Dog", "!", 2);  // ILLEGAL
+
+  // First Class Citizens
+  firstClassCitizen();
 
 }
