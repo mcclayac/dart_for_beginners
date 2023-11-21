@@ -96,12 +96,39 @@ List<DateTime> birthdayParadox() {
   return birthdays;
 }
 
-bool containsDuplicates(List<DateTime> birthdays) {
+bool containsDuplicates(List<DateTime> birthdays, int iterations) {
   bool duplicates = false;
 
 
-
+  for ( int i = 0; i < birthdays.length; i++) {
+    if (birthdays.skip(i + 1).contains(birthdays[i])) {
+      duplicates = true;
+    }
+  }
+  if (duplicates) {
+    print('Birthdays duplicates found $iterations');
+  }
   return duplicates;
+}
+
+void mapDefinitions() {
+  Map a = {};
+  var b = {};
+  Map c = new Map();
+  var d = new Map();
+
+
+  print('\nMap Definitions');
+  Map countryCapitals = {"France":"Paris","USA":"Washington D.C.","Japan":"Tokyo"};
+  Map nameAge = {"Matt":27,"John":18,"Sarah":17,"Larry":80};
+  Map employees = {
+      312: {"name":"Donald Smith", "department":"Accounting", "salary": 1000},
+      220: {"name":"Mark Anderson", "department":"Sales","salary":950},
+      572: {"name":"Elizabeth Brahmen", "department":"Marketing","salary":975}
+  };
+  print('Country / Capitals = $countryCapitals');
+  print('Name and age = $nameAge');
+  print('Employees = $employees');
 }
 
 
@@ -111,11 +138,13 @@ void birthdayDuplicate() {
   print('\nBirthdays Duplicate foriterations =  $ITERATIONS');
   int matches = 0;
 
-  for ( int i = 0; i < ITERATIONS; i++) {
+  for (int i = 0; i < ITERATIONS; i++) {
     birthdays = birthdayParadox();
-
+    if (containsDuplicates(birthdays, i)) {
+      matches++;
+    }
   }
-
+  print('There were duplicates ${(matches / ITERATIONS) * 100}% of the time.');
 }
 
 void main() {
@@ -131,4 +160,7 @@ void main() {
     print('   - $dt');
   }
 
+  birthdayDuplicate();
+
+  mapDefinitions();
 }
