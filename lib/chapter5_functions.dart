@@ -169,13 +169,101 @@ String manyTalk(String toMany) {
   return allTogether;
 }
 
-
+// First Class Functions
 void firstClassCitizen() {
 
+  print('\n\nFirst Class Functions');
   talkAbout("TicTac", exclame);
   talkAbout("TocToc", manyTalk);
   talkAbout("TikTik", manyTalk);
 }
+
+
+// FUnctions withmn Functions
+void functionsWithFuctions() {
+
+
+  print("\n\nFunctions within Functions");
+// Within FUnction
+  void talkAbout2(String toShout, shoutFunc) {
+    print(shoutFunc(toShout));
+  }
+
+  // with function
+  String exclame2(String toExclaim) => toExclaim + "!";
+
+  // Within Function
+  String manyTalk2(String toMany) {
+    String allTogether = "";
+    int repetitions = 4;
+    for (int i = 0; i < repetitions; i++) {
+      allTogether += " " + toMany;
+    }  // end-for
+    return allTogether;
+  }
+
+  talkAbout2("Hello2", exclame2);
+  talkAbout2("TicToc", manyTalk);
+
+  // anonymous function
+  talkAbout2("Wow", (String s) => s.toUpperCase());
+
+  // Did you notice the anonymous function in the last
+  // line of main()? That’s right, a function with no
+  // title to identify it is known as an anonymous
+  // function. Dart allows the definition of
+  // anonymous functions, even within a function
+  // call, as above. Anonymous functions are useful
+  // in situations where a function does not need to
+  // be called from multiple parts of a program by
+  // its identifier, or where they simply make
+  // sense stylistically.
+}
+
+
+// Calculate n! factorial recursively
+int factorial(int n) {
+  if (n <= 1) {
+    return 1;
+  }
+  return n * factorial(n -1);
+}
+
+// calculat factorial iteratovely
+int factorial2(int n) {
+  int total = 1;
+  for (int i = n; i > 0; i--) {
+    total *= i;
+  }
+  return total;
+}
+
+void calculateFactorial() {
+
+
+  print('\n\nFactorial Calculated recursivly and iteratively');
+  int n = 0;
+
+  print('What factorial do you want to calculate??');
+  String? temp = stdin.readLineSync();
+
+  try {
+    n = int.parse(temp!);
+  } on FormatException {
+    print("That was not an integer.");
+    return;
+  }
+
+  if (n <= 0) {
+    print("That's not a positive integer!");
+    return;
+  }
+
+  print('n! = ${factorial(n)} calculated recursivly');
+  print('n! = ${factorial2(n)} calculated Iteratively');
+}
+
+
 void main() {
 
   print('\n\nChapter 5 Functions');
@@ -198,5 +286,11 @@ void main() {
 
   // First Class Citizens
   firstClassCitizen();
+
+  // Functions within Functions
+  functionsWithFuctions();
+
+  // Fuctions recursivly and iteratively
+  calculateFactorial();
 
 }
