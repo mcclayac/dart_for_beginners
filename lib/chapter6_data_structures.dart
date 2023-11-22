@@ -111,6 +111,33 @@ bool containsDuplicates(List<DateTime> birthdays, int iterations) {
   return duplicates;
 }
 
+bool containsDuplicates2(List<DateTime> birthdays, int iterations) {
+
+  Set<DateTime> s = Set.from(birthdays);
+  if (s.length < birthdays.length) {
+    print('  Duplicates in birthday set #$iterations');
+    return true;
+  }
+  return false;
+}
+
+
+void birthdayDuplicate() {
+  List<DateTime> birthdays = birthdayParadox();
+  int ITERATIONS = 10000;
+  print('\nBirthdays Duplicate foriterations =  $ITERATIONS');
+  int matches = 0;
+
+  // two versions of contains duplicates
+  for (int i = 0; i < ITERATIONS; i++) {
+    birthdays = birthdayParadox();
+    if (containsDuplicates2(birthdays, i)) {
+      matches++;
+    }
+  }
+  print('There were duplicates ${(matches / ITERATIONS) * 100}% of the time.');
+}
+
 void mapDefinitions() {
   Map a = {};
   var b = {};
@@ -122,29 +149,66 @@ void mapDefinitions() {
   Map countryCapitals = {"France":"Paris","USA":"Washington D.C.","Japan":"Tokyo"};
   Map nameAge = {"Matt":27,"John":18,"Sarah":17,"Larry":80};
   Map employees = {
-      312: {"name":"Donald Smith", "department":"Accounting", "salary": 1000},
-      220: {"name":"Mark Anderson", "department":"Sales","salary":950},
-      572: {"name":"Elizabeth Brahmen", "department":"Marketing","salary":975}
+    312: {"name":"Donald Smith", "department":"Accounting", "salary": 1000},
+    220: {"name":"Mark Anderson", "department":"Sales","salary":950},
+    572: {"name":"Elizabeth Brahmen", "department":"Marketing","salary":975}
   };
   print('Country / Capitals = $countryCapitals');
   print('Name and age = $nameAge');
   print('Employees = $employees');
+
+  print('\nMap Product and price map');
+  Map productPrice = {"Gum": 0.95, "Soda": 1.05, "Chips": 1.99};
+  print('Product / price = $productPrice');
+  double gumPrice = productPrice["Gum"];
+  print('gum price = $gumPrice');
+
+  productPrice["Cookie"] = 0.50;
+  print('productPrice["Cookie"] = 0.50;');
+  print('Product / price = $productPrice');
+
+  productPrice["Soda"] = gumPrice;
+  print('productPrice["Soda"] = gumPrice;');
+  print('Product / price = $productPrice');
+
+  print('\nList<generics> implementation');
+  Map<String,double> productPrice2 = {"Gum": 0.95, "Soda": 1.05, "Chips": 1.99};
+  print('Map<String,double> variable');
+  print('Product / price 2 = $productPrice');
+
+  // productPrice2[34] = 1.34;  // Error
+  // productPrice2["Bagel"] = "Free"; // Error
 }
 
+void setDefinitions() {
 
-void birthdayDuplicate() {
-  List<DateTime> birthdays = birthdayParadox();
-  int ITERATIONS = 10000;
-  print('\nBirthdays Duplicate foriterations =  $ITERATIONS');
-  int matches = 0;
+  print('\nSet definitions');
 
-  for (int i = 0; i < ITERATIONS; i++) {
-    birthdays = birthdayParadox();
-    if (containsDuplicates(birthdays, i)) {
-      matches++;
-    }
+  Set blankSet = new Set();
+  Set blamkSet2 = Set();
+  Set elementals = new Set.from(["wind","water","fire","earth"]);
+  print('Elementals Set = $elementals');
+  elementals.add("fire");  // not an error, but does nothing since "fire" already in elementals
+  print('elementals.add("fire");');
+  print('Elementals Set = $elementals');
+  elementals.addAll(["thunder","lightning"]);
+  print('elementals.addAll(["thunder","lightning"]);');
+  print('Elementals Set = $elementals');
+  elementals.remove("water");
+  print('elementals.remove("water");');
+  print('Elementals Set = $elementals');
+
+  print('\nSets<generics> ');
+  Set<String> jerryColors = Set.from(["blue","red","green"]);
+  print("jerry colors = $jerryColors");
+  Set<String> manyColors = Set.from(["red","green","yellow"]);
+  print('many colors = $manyColors');
+  Set<String> bothColors = jerryColors.intersection(manyColors);
+  print('both colors = $bothColors');
+  for ( String color in bothColors) {
+    print('  $color');
   }
-  print('There were duplicates ${(matches / ITERATIONS) * 100}% of the time.');
+
 }
 
 void main() {
@@ -163,4 +227,5 @@ void main() {
   birthdayDuplicate();
 
   mapDefinitions();
+  setDefinitions();
 }
