@@ -19,5 +19,5 @@ void main(List<String> arguments) {
   myProducts.forEach((key, value) => print("$key : $value"));
   print("\nUser Collection");
   userCollection.forEach((k, v) => print("$k : $v"));
-  
+
 }
