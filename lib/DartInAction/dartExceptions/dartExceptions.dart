@@ -17,6 +17,8 @@ void dartEceptions() {
     print(e.toString());
     print('Cannot divide by zero');
     print("print('x($x) / y($y)')");
+  } finally {
+    print('This will print no matter what.');
   }
 
 }
