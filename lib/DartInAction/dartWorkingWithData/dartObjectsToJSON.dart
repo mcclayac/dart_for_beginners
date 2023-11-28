@@ -23,6 +23,10 @@ class Person {
       'email':email,
     };
   } // end Map<String, dynamic> toJson()
+
+  String toString() {
+    return "\na Person Object:\nname: $name\nage: $age\nemail: $email";
+  }
 }  // end Person
 
 
@@ -59,6 +63,13 @@ void main() {
   print('\nDecodedList = \n$decodedList');
 
   print('\nDecoded Person List<Person>');
+
+  for (var value in decodedList) {
+    print(value);
+    // Person p = (value as Person);
+    // print(p);
+  }
+
   // casting from JSON List
 
   // This part of my code is not working
